@@ -29,6 +29,7 @@
         <hadoop.mr1.version>2.0.0-mr1-cdh4.4.0</hadoop.mr1.version>
         <hadoop.version>2.0.0-cdh4.4.0</hadoop.version>
         <maven-s3-wagon.version>1.2.1</maven-s3-wagon.version>
+        <maven-license-plugin.version>2.10</maven-license-plugin.version>
     </properties>
 
 
