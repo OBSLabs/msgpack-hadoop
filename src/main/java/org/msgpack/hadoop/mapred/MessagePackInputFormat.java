@@ -33,7 +33,7 @@ import org.msgpack.hadoop.io.MessagePackWritable;
 public abstract class MessagePackInputFormat extends FileInputFormat<LongWritable, MessagePackWritable> {
     @Override
     protected boolean isSplitable(FileSystem fs, Path filename) {
-        return true;
+        return false;
     }
 
     @Override
