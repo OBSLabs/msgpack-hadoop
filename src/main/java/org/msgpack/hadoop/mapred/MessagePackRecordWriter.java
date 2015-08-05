@@ -26,14 +26,14 @@ import org.apache.hadoop.mapred.RecordWriter;
 import org.apache.hadoop.mapred.Reporter;
 import org.msgpack.hadoop.io.MessagePackWritable;
 
-public class MessagePackRecordWriter implements RecordWriter<NullWritable, MessagePackWritable> {
+public class MessagePackRecordWriter implements RecordWriter<String, MessagePackWritable> {
     protected DataOutputStream out;
 
     public MessagePackRecordWriter(DataOutputStream out) throws IOException {
         this.out = out;
     }
 
-    public synchronized void write(NullWritable key, MessagePackWritable value) throws IOException {
+    public synchronized void write(String key, MessagePackWritable value) throws IOException {
     	value.write(out);
     }
 

@@ -30,9 +30,9 @@ import org.apache.hadoop.mapred.RecordWriter;
 import org.apache.hadoop.util.Progressable;
 import org.msgpack.hadoop.io.MessagePackWritable;
 
-public class MessagePackOutputFormat extends FileOutputFormat<NullWritable, MessagePackWritable> {
+public class MessagePackOutputFormat extends FileOutputFormat<String, MessagePackWritable> {
     @Override
-    public RecordWriter<NullWritable, MessagePackWritable> getRecordWriter(FileSystem ignored,
+    public RecordWriter<String, MessagePackWritable> getRecordWriter(FileSystem ignored,
         JobConf job, String name, Progressable progress)
     throws IOException {
         Path file = FileOutputFormat.getTaskOutputPath(job, name);

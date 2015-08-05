@@ -28,6 +28,7 @@ import org.apache.hadoop.io.Writable;
 import org.msgpack.MessagePack;
 import org.msgpack.MessagePackable;
 import org.msgpack.unpacker.Unpacker;
+import org.msgpack.packer.Packer;
 
 /**
  * A Hadoop Writable wrapper for MessagePack (untyped).
@@ -49,12 +50,13 @@ public class MessagePackWritable implements Writable {
 	}
 
 	public void readFields(DataInput dataInput) throws IOException {
-		msgpack.createUnpacker(new DataInputWrapper(dataInput));
-		payload.readFrom((Unpacker) dataInput);
+		Unpacker unpacker = msgpack.createUnpacker(new DataInputWrapper(dataInput));
+		payload.readFrom(unpacker);
 	}
 
 	public void write(DataOutput dataOutput) throws IOException {
-		msgpack.createPacker(new DataOutputWrapper(dataOutput));
+		Packer packer = msgpack.createPacker(new DataOutputWrapper(dataOutput));
+    payload.writeTo(packer);
 	}
 
 
