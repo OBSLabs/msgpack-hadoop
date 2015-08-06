@@ -112,7 +112,7 @@ public class MessagePackRecordReader implements RecordReader<LongWritable, Messa
     			// from where it should
     			fileIn.seek(pos);
         	}catch(java.io.IOException e){
-        		if(e.getMessage().startsWith("Invalid byte: ")){
+        		if(e.getMessage() != null && e.getMessage().startsWith("Invalid byte: ")){
         			// thrown by MsgPack (hopefully :s)
         			pos++;
         			unpacker = msgpack.createUnpacker(fileIn);
